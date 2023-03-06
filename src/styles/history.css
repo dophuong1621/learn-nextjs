@@ -1,0 +1,116 @@
+.war {
+    border: 2px solid #FCD34D;
+}
+
+.el-table--fit {
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.el-table {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    background-color: #fff;
+    font-size: 14px;
+    color: #606266;
+}
+
+.el-table__header-wrapper {
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.el-table__header {
+    table-layout: fixed;
+    border-collapse: separate;
+}
+
+.el-table thead {
+    color: #2b2b2b!important;
+}
+
+.el-table thead {
+    color: #909399;
+    font-weight: 500;
+}
+
+.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+    border-bottom: 1px solid #ebeef5;
+}
+
+.el-table__body-wrapper.is-scrolling-none {
+    border-bottom: 1px solid #ebeef5;
+}
+
+.el-table th.el-table__cell {
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: #fff;
+}
+
+.el-table .el-table__cell {
+    padding: 12px 0;
+    min-width: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+}
+
+.el-table th.el-table__cell>.cell {
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.el-table .cell {
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    line-height: 23px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.el-table__body-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.el-table__body-wrapper, .el-table__footer-wrapper, .el-table__header-wrapper {
+    width: 100%;
+}
+
+.el-table__body, .el-table__footer, .el-table__header {
+    table-layout: fixed;
+    border-collapse: separate;
+}
+
+.el-table__empty-block {
+    min-height: 60px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.el-table__empty-text {
+    line-height: 60px;
+    width: 50%;
+    color: #909399;
+}

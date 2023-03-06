@@ -1,0 +1,77 @@
+.mw-72r {
+    max-width: 72rem;
+}
+
+.new-id {
+    color: #fff !important;
+    background: url('../image/voucher3.png');
+    background-size: 100% 90%;
+    padding-left: 0.575rem;
+    padding-right: 0.575rem;
+}
+
+.ct-down {
+    border-bottom-right-radius: 0.125rem;
+    border-bottom-left-radius: 0.125rem;
+}
+
+.mb-5r {
+    margin-bottom: 5rem;
+}
+
+.border-top-w {
+    border-top: 1px solid #E5E5E5;
+}
+
+.element {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gap-075 {
+    gap: 0.75rem;
+}
+
+.h-10r {
+    height: 10rem;
+}
+
+.img-post {
+    object-position: center;
+    object-fit: fill;
+    border-top-left-radius: 0.125rem;
+    border-top-right-radius: 0.125rem;
+}
+
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rg-025r {
+    row-gap: 0.25rem;
+}
+
+
+.left-0 {
+    left: 0 !important;
+}
+
+.right-0 {
+    right: 0 !important;
+}
+
+.ms{
+    background-image: url('../image/bg-1.jpeg');
+}
+
+.text-dm{
+    color: #FDE2E2;
+}
+
+.bor-bot-x-ra-025 {
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
