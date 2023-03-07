@@ -9,13 +9,15 @@ class HeaderComponent extends Component {
                 <nav className="m-width">
                     <div className="container-h">
                         <div className="header d-flex">
-                            <div className="h-left d-flex align-items-center">
-                                <Link href="/home" className="h-img" >
+                            <div className="h-left d-flex flex-item-cent">
+                                <div>
+                                <Link href="/home" className="h-image">
                                     <Image src="https://cdns.diongame.com/static/image-87a3f611-cc43-4bc6-a047-a5de520ad6b6.png"
-                                        className="h-img1" alt="" width={143} height={48} />
+                                        className="h-image1" alt="" width={143.7} height={48}/>
                                     <Image src="https://cdns.diongame.com/static/image-49572b34-c8b0-40df-8d04-13c44741d328.png"
-                                        className="h-img2" alt='' width={143} height={101} />
+                                        className="h-image2" alt='' width={143.7} height={48}/>
                                 </Link>
+                                </div>
                                 <a href="recharge"
                                     className="d-none d-sm-flex ml-25r fw-7 px-075 text-sm align-items-center cursor-pointer t-color">
                                     <span
