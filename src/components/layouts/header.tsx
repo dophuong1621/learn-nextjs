@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 class HeaderComponent extends Component {
     render() {
         return (
@@ -10,12 +9,12 @@ class HeaderComponent extends Component {
                 <nav className="m-width">
                     <div className="container-h">
                         <div className="header d-flex">
-                            <div className="h-left d-flex flex-item-cent">
-                                <Link href="/home" className="h-Image">
+                            <div className="h-left d-flex align-items-center">
+                                <Link href="/home" className="h-img" >
                                     <Image src="https://cdns.diongame.com/static/image-87a3f611-cc43-4bc6-a047-a5de520ad6b6.png"
-                                        className="h-Image1" alt="" fill/>
+                                        className="h-img1" alt="" width={143} height={48} />
                                     <Image src="https://cdns.diongame.com/static/image-49572b34-c8b0-40df-8d04-13c44741d328.png"
-                                        className="h-Image2" alt='' fill/>
+                                        className="h-img2" alt='' width={143} height={101} />
                                 </Link>
                                 <a href="recharge"
                                     className="d-none d-sm-flex ml-25r fw-7 px-075 text-sm align-items-center cursor-pointer t-color">
@@ -33,8 +32,7 @@ class HeaderComponent extends Component {
                                     NẠP ATM/MOMO
                                 </a>
                             </div>
-                            {/* @if (session()->get('username')) */}
-                            <div className="d-flex flex-wrap align-items-center">
+                            {/* <div className="d-flex flex-wrap align-items-center">
                                 <Link href="/notification" className="h-25r me-sm-3 text-2xl br-05 justify-content-center align-items-center w-25r d-flex position-relative mr-075">
                                     <i className="bx bxs-bell">
                                     </i>
@@ -150,37 +148,19 @@ class HeaderComponent extends Component {
                                         </span>
                                     </span>
                                 </div>
-                            </div>
-                            {/* @else */}
+                            </div> */}
                             <div className="h-right d-flex none">
-                                <button className="btn-login bg-color">
-                                    <span className="ct-btn-login">
-                                        <span className="ic-btn-login">
-                                            <i className="fas fa-user"></i>
-                                            <span className="t-btn-login uppercase">Đăng Nhập</span>
-                                        </span>
+                                <button className="btn-login">
+                                    <span className="ct-btn-login ic-btn-login">
+                                        <i className="bx bxs-user text-lg" style={{top:10, position:'absolute'}}></i>
+                                        <span className="ml-15 text-uppercase">Đăng Nhập</span>
                                     </span>
                                 </button>
                             </div>
-                            {/* @endif */}
                         </div>
                     </div>
                 </nav>
             </header>
-            // <div className="navbar">
-            //     <div className="header">
-            //         <div className="col-1">
-            //             <div className="menu">
-            //                 <div>
-            //                         <Link href="/User">Users</Link>
-            //                 </div>
-            //                 <div>
-            //                     <Link href="/nonUser">Non Users</Link>
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>
         )
     }
 }

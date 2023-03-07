@@ -12,11 +12,13 @@
 .h-img1 {
     position: relative;
     z-index: 1;
-    height: 3rem;
-    max-width: 100%;
+    object-fit: cover;
+    /* height: 3rem;
+    max-width: 100%; */
 }
 
 .h-img2 {
+    object-fit: cover;
     top: -14px;
     z-index: 0;
     position: absolute;
@@ -195,7 +197,7 @@ header {
 }
 
 
-.wrap-image {
+/* .wrap-image {
     position: relative;
     padding-bottom: 56%;
 }
@@ -204,4 +206,4 @@ header {
     position: absolute;
     width: 100%;
     height: 100%;
-}
+} */

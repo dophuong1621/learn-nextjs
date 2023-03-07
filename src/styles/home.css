@@ -118,11 +118,15 @@ body {
     line-height: 1.5;
     color: #ef4444;
     text-align: left;
-    background-color: #fff;
+    background-color: #F5F5F5 !important;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }
 
 hr {
@@ -268,6 +272,10 @@ th {
 
 .ml-275 {
     margin-left: 2.75rem;
+}
+
+.ml-15 {
+    margin-left: 1.5rem;
 }
 
 .ml-2r{
@@ -561,6 +569,11 @@ ul{
 .text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
 .ls-0025{
