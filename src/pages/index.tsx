@@ -1,9 +1,10 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Marquee from "react-fast-marquee";
 export interface HomePageProps {
 }
 
 export default function HomePage(props: HomePageProps) {
+  const [active, setActive] = useState('')
   return (
     <div className="main-content">
       <div className="content">
@@ -36,15 +37,15 @@ export default function HomePage(props: HomePageProps) {
           </div>
           <div className="bxh-home">
             <div className="title-h d-flex fw-7 bg-box">
-              <div className="top-nap pb-1 pe-1 ps-1">
-                <span className="t-top uppercase t-color fw-8">Top Nạp T.2</span>
+              <div className={`top-nap pb-1 pe-1 ps-1 ${active === 'sk' ? 'bg-box-gray' : ''}`}  onClick={() => setActive('tn')}>
+                <span className={`t-top uppercase  fw-8 ${active === 'sk' ? 'text-black' : 't-color'}`}>Top Nạp T.2</span>
                 <div className="tc d-flex justify-content-center">
-                  <button className="t-tc uppercase fw-7 text-white pe-2 ps-2 tc-a">Thẻ cào</button>
+                  <button className={`t-tc uppercase fw-7 text-white pe-2 ps-2 ${active === 'sk' ? '' : 'tc-a'}`}>Thẻ cào</button>
                 </div>
               </div>
-              <div className="sk-new d-flex bg-box-gray">
-                <i className="fa-gift fa gift"></i>
-                <button className="uppercase t-sk text-lg fw-8 t-sm">Sự kiện mới</button>
+              <div className={`sk-new d-flex ${active === 'sk' ? 'bg-box' : 'bg-box-gray'}`} onClick={() => setActive('sk')}>
+                <i className={`fa-gift fa gift`}></i>
+                <button className={`uppercase text-lg fw-8 t-sm border-0 ${active === 'sk' ? 'bg-box t-color' : 'bg-box-gray'}`}>Sự kiện mới</button>
               </div>
             </div>
             <div className="content-h pt-2 pb-2 bg-box position-relative">
