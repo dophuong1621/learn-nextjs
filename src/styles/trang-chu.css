@@ -125,7 +125,7 @@
     border-color: hsla(0, 0%, 57.3%, 0) !important;
     padding-left: 0.375rem;
     padding-right: 0.375rem;
-    background-image: url('../pages/image/voucher3.png');
+    background-image: url('/image/voucher3.png');
     background-size: 105% 80% !important;
     background-position: center !important;
     background-repeat: repeat;

@@ -15,6 +15,10 @@
     border-top-color: #ef4444;
 }
 
+.el-input__inner:hover {
+    cursor: not-allowed;
+}
+
 .el-select {
     display: inline-block;
     position: relative;

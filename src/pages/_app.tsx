@@ -2,7 +2,6 @@ import React from 'react';
 import App from 'next/app';
 import Layout from '../components/layouts/';
 import '@/styles/header.css';
-<<<<<<< HEAD
 import '@/styles/footer.css';
 import '@/styles/box-right-content.css';
 import '@/styles/history.css';

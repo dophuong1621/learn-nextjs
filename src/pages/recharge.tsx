@@ -1,14 +1,17 @@
-import * as React from 'react';
+import { useState } from 'react';
 import BoxLeft from '@/components/layouts/sidebar';
+import BtnMenu from '@/components/btn-menu';
 
 export interface RechargePageProps {
 }
 
 export default function RechargePage(props: RechargePageProps) {
+    const [isActive, setIsActive] = useState('');
+
     return (
         <div>
             <div className="px-2 gap-2 ct d-grid mx-auto">
-            {/* @include('users.btn-menu') */}
+                <BtnMenu></BtnMenu>
                 <BoxLeft></BoxLeft>
                 <div className="gc-8 gc-12i">
                     <div className="px-125 py-sm-3 br-025 w-100 mb-3 bg-box p-1r">
@@ -26,20 +29,20 @@ export default function RechargePage(props: RechargePageProps) {
                                 <label className="text-sm">
                                     Nhà mạng <b>(Ưu tiên Viettel, Vinaphone)</b></label>
                                 <div className="text-sm gap-2 d-grid grid-temp-col-12 " id="homeNetwork">
-                                    <button type="button" className="fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box viettel"
-                                        data-type="0">
-                                        <img style={{ filter: 'grayscale(100%)', maxWidth: '100%', height: 'auto' }}
-                                            src="assetsU/image/viettel.png" alt='' />
+                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box viettel ${isActive === 'viettel' ? 'bor-col-red' : ''}`}
+                                        data-type="0" onClick={() => setIsActive('viettel')}>
+                                        <img style={{ filter: `${isActive === 'viettel' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
+                                            src="/image/viettel.png" alt='' />
                                     </button>
-                                    <button type="button" className="fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box vina"
-                                        data-type="1">
-                                        <img style={{ filter: 'grayscale(100%)', maxWidth: '100%', height: 'auto' }}
-                                            src="assetsU/image/vinaphone.png" alt='' />
+                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box vina ${isActive === 'vina' ? 'bor-col-red' : ''}`}
+                                        data-type="1" onClick={() => setIsActive('vina')}>
+                                        <img style={{ filter: `${isActive === 'vina' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
+                                            src="/image/vinaphone.png" alt='' />
                                     </button>
-                                    <button type="button" className="fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box mobi"
-                                        data-type="2">
-                                        <img style={{ filter: 'grayscale(100%)', maxWidth: '100%', height: 'auto' }}
-                                            src="assetsU/image/mobifone.png" alt='' />
+                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box mobi ${isActive === 'mobi' ? 'bor-col-red' : ''}`}
+                                        data-type="2" onClick={() => setIsActive('mobi')}>
+                                        <img style={{ filter: `${isActive === 'mobi' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
+                                            src="/image/mobifone.png" alt='' />
                                     </button>
                                 </div>
                             </div>
@@ -91,11 +94,21 @@ export default function RechargePage(props: RechargePageProps) {
                     </div>
                     <div className="line-h-175 text-sm py-1 px-075 br-025 my-2 text-br-color bg-box">
                         <div>
-                            <p><span style={{color:'rgb(220, 38, 38);'}}><strong>Khi nạp thẻ mua nick tại web
-                                shop&nbsp;nạp&nbsp;thẻ không trừ chiết khấu nạp 100k card = 100k tiền
-                                shop</strong></span></p>
-                            <p><span style={{color:'rgb(220, 38, 38);'}}><strong>Lưu ý: Vui lòng nạp đúng mệnh giá, sai mệnh giá
-                                sẽ không được cộng tiền vào tài khoản.</strong></span></p>
+                            <p>
+                                <span className="t-color">
+                                    <strong>
+                                        Khi nạp thẻ mua nick tại web shop&nbsp;nạp&nbsp;thẻ không trừ chiết khấu nạp 100k card = 100k tiền shop
+                                    </strong>
+                                </span>
+                            </p>
+                            <p>
+                                <span className="t-color">
+                                    <strong>
+                                        Lưu ý: Vui lòng nạp đúng mệnh giá, sai mệnh giá
+                                        sẽ không được cộng tiền vào tài khoản.
+                                    </strong>
+                                </span>
+                            </p>
                         </div>
                     </div>
                     <div className="bg-box br-025 mt-3 w-100">
@@ -121,7 +134,7 @@ export default function RechargePage(props: RechargePageProps) {
                                     <th className="px-2 py-2">{{ $type[$rc->type_charge] }}</th>
                                     <th className="px-2 py-2">{{ $rc->pin . '/' . $rc->serial }}</th>
                                     <th className="px-2 py-2">{{ number_format($rc->money_received, 0, '.', '.') }} đ</th>
-                                </tr @endforeach> */}
+                                    </tr @endforeach> */}
                                 </tbody>
                             </table>
                         </div>
