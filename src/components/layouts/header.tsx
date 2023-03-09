@@ -161,7 +161,7 @@ function HeaderComponent() {
                         <div className="h-right d-flex none">
                             <button className="btn-login" onClick={() => setModalLogin(true)}>
                                 <span className="ct-btn-login ic-btn-login">
-                                    <i className="bx bxs-user text-lg d-none d-md-block" style={{ top: 10, position: 'absolute' }}></i>
+                                    <i className="bx bxs-user text-lg d-none d-md-block" style={{ top: 12, position: 'absolute' }}></i>
                                     <span className="ml-15 text-uppercase ml-0r">Đăng Nhập</span>
                                 </span>
                             </button>

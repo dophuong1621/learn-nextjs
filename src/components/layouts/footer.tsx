@@ -15,10 +15,10 @@ class FooterComponent extends Component {
                                     className="img-ft" alt="" width={143} height={48} />
                                 <span className="text-uppercase">hiharobux.com - shop acc roblox chính chủ stream oops hiha</span>
                             </span>
-                            <p className="mar-p">
+                            <p className="mar-p d-none d-md-block">
                                 <Link href="#" className="pri">Privacy Policy</Link>
                             </p>
-                            <p className="mar-p">
+                            <p className="mar-p d-none d-md-block">
                                 <Link href="#" className="pri">Terms of Service</Link>
                             </p>
                         </div>

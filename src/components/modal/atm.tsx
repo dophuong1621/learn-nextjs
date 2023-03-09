@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react'
 function ModalAtm({ closeModalAtm }: any) {
     const [contentAtm, setContentAtm] = useState('')
     return (
-        <div className="load-atm">
+        <div className="load-atm" style={{ zIndex: 1012 }}>
             <div className="modal-atm" style={{ zIndex: 1010 }}>
                 <div role="dialog" aria-modal="true" aria-label="dialog" className="el-dialog el-dialog-450 tw-dialog-trans">
                     <div className="el-dialog__header">

@@ -8,9 +8,9 @@ function SidebarMenu({ closeSidebarMenu }: any) {
     const [modalAtm, setModalAtm] = useState(false)
 
     return (
-        <div className="btn-menu-left" style={{ zIndex: 1001 }}>
+        <div className="btn-menu-left" >
             {modalAtm && <ModalAtm closeModalAtm={setModalAtm} />}
-            <div className="modal-menu el-drawer__open">
+            <div className="modal-menu el-drawer__open"style={{ zIndex: 1011 }}>
                 <div className="modal-contentt ltr" style={{ width: 280 }}>
                     <header id="btn-menu-title" className="btn-menu-header">
                         <div>
@@ -151,6 +151,7 @@ function SidebarMenu({ closeSidebarMenu }: any) {
                     </section>
                 </div>
             </div>
+            <div className="overlayy" onClick={() => closeSidebarMenu(false)}></div>
         </div >
     )
 }

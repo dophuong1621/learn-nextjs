@@ -1,5 +1,5 @@
-import ModalHome from '@/components/modal/home';
 import { useState } from 'react';
+import ModalHome from '@/components/modal/home';
 import Marquee from "react-fast-marquee";
 export interface HomePageProps {
 }
@@ -7,8 +7,6 @@ export interface HomePageProps {
 export default function HomePage(props: HomePageProps) {
   const [active, setActive] = useState('')
   const [modalHome, setModalHome] = useState(true)
-
-
   return (
     <div className="main-content">
       {modalHome && <ModalHome closeModalHome={setModalHome} />}
@@ -54,7 +52,7 @@ export default function HomePage(props: HomePageProps) {
               </div>
             </div>
             <div className="content-h pt-2 pb-2 bg-box position-relative">
-              <div className={`t-ct-h d-flex justify-content-center ${active === 'sk' ? '' : 'd-none'}`}>Chưa có thông báo mới</div>
+              <div className={`t-ct-h d-flex justify-content-center ${active === 'sk' ? '' : 'd-none'} `} >Chưa có thông báo mới</div>
               <div className={`nt-ct-h ${active === 'sk' ? 'd-none' : ''}`}>
                 <div className="nt-top overflow-auto mb-3">
                   <div className="px-2 d-flex justify-content-between align-items-center mb-025">
