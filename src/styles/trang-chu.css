@@ -370,6 +370,14 @@
 
 /* Reponsive */
 @media screen and (max-width: 769px) {
+    .t-sm{
+        font-size: 0.9rem !important;
+    }
+
+    .modal-atm{
+        top: 33%;
+    }
+
     .t-skh {
         font-size: 0.9rem;
     }
@@ -386,6 +394,10 @@
 @media screen and (max-width: 415px) {
     .text-tk{
         height: 9rem;
+    }
+
+    .modal-atm{
+        top: 40%;
     }
 
     .box1 {

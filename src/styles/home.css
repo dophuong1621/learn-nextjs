@@ -1,7 +1,7 @@
 /* modal-atm  */
 .modal-atm {
     position: absolute;
-    top: 50%;
+    top: 36%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -643,6 +643,7 @@ ul{
 @media screen and (max-width: 415px) {
     .modal-atm{
         width: 95%;
+        top: 40%;
     }
 }
 

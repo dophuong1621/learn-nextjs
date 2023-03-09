@@ -3,8 +3,8 @@ import React from 'react'
 function ModalHome({ closeModalHome }: any) {
     return (
         <div className="popup-home" >
-            <div className="modal-home"  style={{ zIndex: 1011 }}>
-                <div role="dialog" aria-modal="true" aria-label="dialog" className="el-dialog el-dialog-550 tw-dialog-trans">
+            <div className="modal-home el-dialog-550">
+                <div role="dialog" aria-modal="true" aria-label="dialog" className="el-dialog tw-dialog-trans">
                     <div className="tb-home">
                         <div className="t-color fw-7">
                             <i className="position-relative bx bxs-bell-ring text-xl" style={{ top: 3 }}></i>
