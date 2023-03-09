@@ -17,7 +17,7 @@ export default function WithdrawItems(props: WithdrawItemsProps) {
                     <div className="grid-temp-col-12 d-grid mb-3 bg-box">
                         <button className="fw-8 text-white py-2 border-bot-w-red gc-4 position-relative rut-robux">
                             <span>Rút
-                                <span className="d-sm-inline-block d-none">Robux</span><span className="d-sm-none">RB</span></span>
+                                <span className="d-sm-inline-block d-none"> Robux</span><span className="d-sm-none"> RB</span></span>
                             <p className="text-sm fw-6 rb">(Robux)</p>
                         </button>
                     </div>

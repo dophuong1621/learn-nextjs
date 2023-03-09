@@ -17,7 +17,7 @@ export default function Info(props: IInfoProps) {
                         <div className="d-sm-none gc-12 d-block">
                             <div className="d-grid grid-temp-col-12 gap-2 padding-05r bg-box br-025">
                                 <div className="gc-3 d-flex align-items-center ">
-                                    <img src="/assetsU/image/unknown-avatar.jpg" className="w-100 br-9999 bor-1" alt='' />
+                                    <img src="/image/unknown-avatar.jpg" className="w-100 br-9999 bor-1" alt='' />
                                 </div>
                                 <div className="gc-9 d-flex align-items-center">
                                     <div className="ms-2">

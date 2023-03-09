@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ModalAtm from '../modal/atm';
 export interface BoxLeftProps {
 }
 
 export default function BoxLeft(props: BoxLeftProps) {
-    // const [title, setTitle] = useState('')
-    // const location = useLocation()
-
     const router = useRouter();
-    console.log(router.pathname.slice(0, router.pathname.lastIndexOf('/')))
+    const [modalAtm, setModalAtm] = useState(false)
     return (
         <div className="d-sm-block d-none ct-l">
+            {modalAtm && <ModalAtm closeModalAtm={setModalAtm} />}
             <div className="px-0 py-0 w-100 position-sticky ct-l-2" style={{ zIndex: 200 }}>
                 <div className="pb-2 pe-2 gap-2 menu-ava d-grid">
                     <div className="d-flex align-items-center ava">
@@ -93,7 +92,7 @@ export default function BoxLeft(props: BoxLeftProps) {
                         <div className="ml-275 fw-6 text-sm mt-1">
                             <ul>
                                 <Link href="/recharge" className={`py-1 d-block ${router.pathname === '/recharge' ? 't-color' : 'text-black'}`}>Nạp thẻ cào tự động</Link>
-                                <span className="text-black py-1 d-block atm cursor-pointer">Nạp qua ATM/MOMO</span>
+                                <span className="text-black py-1 d-block atm cursor-pointer" onClick={() => setModalAtm(true)}>Nạp qua ATM/MOMO</span>
                             </ul>
                         </div>
                     </div>

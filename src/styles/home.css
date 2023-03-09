@@ -1,13 +1,9 @@
 /* modal-atm  */
 .modal-atm {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: auto;
-    margin: 0;
-    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .tw-transaction .el-dialog {
@@ -16,12 +12,10 @@
 
 .el-dialog {
     position: relative;
-    margin: 0 auto 50px;
     background: #fff;
     border-radius: 2px;
     box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
     box-sizing: border-box;
-    width: 50%;
 }
 
 .tw-dialog-trans .el-dialog__header {
@@ -646,5 +640,9 @@ ul{
     height: 1.75rem;
 }
 
-
+@media screen and (max-width: 415px) {
+    .modal-atm{
+        width: 95%;
+    }
+}
 

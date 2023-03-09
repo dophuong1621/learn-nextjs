@@ -114,3 +114,9 @@
     width: 50%;
     color: #909399;
 }
+
+@media screen and (max-width: 415px) {
+    .no-data{
+        width: 100% !important;
+    }
+}

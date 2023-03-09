@@ -1,10 +1,14 @@
-import Link from 'next/link';
-import * as React from 'react';
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 export interface IModalProps {
 }
 
 export default function Modal(props: IModalProps) {
+    const [contentAtm, setContentAtm] = useState('')
+    const router = useRouter()
+
     return (
         <div>
             {/* popup atm */}
@@ -24,20 +28,20 @@ export default function Modal(props: IModalProps) {
                             <div className="my-3" style={{ wordBreak: 'break-word' }}>
                                 <div className="d-grid grid-temp-col-12 gap-3">
                                     <div className="gc-6 gc-12i">
-                                        <button className="px-3 align-items-center br-025 w-100 d-flex h-3r border bank">
-                                            <img className="w-15 lazyLoad isLoaded" src="/assetsU/image/bank.png" alt='' />
+                                        <button className="px-3 align-items-center br-025 w-100 d-flex h-3r border bank" onClick={() => setContentAtm('atm')}>
+                                            <img className="w-15 lazyLoad isLoaded" src="/image/bank.png" alt='' />
                                             <span className="ml-05 fw-6 text-bank">Ngân Hàng (ATM)</span>
                                         </button>
                                     </div>
                                     <div className="gc-6 gc-12i">
-                                        <button className="px-3 align-items-center br-025 w-100 d-flex h-3r border momo">
-                                            <img className="w-15 lazyLoad isLoaded" src="/assetsU/image/momo.png" alt='' />
+                                        <button className="px-3 align-items-center br-025 w-100 d-flex h-3r border momo" onClick={() => setContentAtm('momo')}>
+                                            <img className="w-15 lazyLoad isLoaded" src="/image/momo.png" alt='' />
                                             <span className="ml-05 fw-6 text-momo">Ứng dụng MOMO</span>
                                         </button>
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="mt-3 ct-nt">
+                                    <div className={`mt-3 ct-nt ${contentAtm === 'atm' || contentAtm === 'momo' ? 'd-none' : ''}`} >
                                         <div className="text-sm fw-6">
                                             <p>
                                                 <span>
@@ -58,7 +62,7 @@ export default function Modal(props: IModalProps) {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="mt-3 ct-nt">
+                                    <div className={`mt-3 ct-nt ${contentAtm === 'atm' || contentAtm === 'momo' ? 'd-none' : ''}`}>
                                         <label className="uppercase t-color fw-7 text-sm d-block mb-2">
                                             Quy Đổi Tiền Nạp ATM/MOMO
                                         </label>
@@ -93,7 +97,7 @@ export default function Modal(props: IModalProps) {
                                         </div>
                                     </div>
                                     {/* content popup atm */}
-                                    <div className="mt-3" id="ct-bank" style={{ display: 'none' }}>
+                                    <div className="mt-3" id="ct-bank" style={{ display: `${contentAtm === 'atm' ? 'block' : 'none'}` }}>
                                         <div>
                                             <div>
                                                 <div className="text-sm t-color line-h-15">
@@ -147,9 +151,8 @@ export default function Modal(props: IModalProps) {
                                                     <b className="mx-1 t-color">nap1650845 </b>bên trên.
                                                 </div>
                                                 <div className="mt-1 text-sm fw-6 t-color">
-                                                    <i>Lưu ý: Sau khi chuyển khoản xong, hãy chờ "vài phút" rồi ấn <b>"Xác nhận.
-                                                        Tôi
-                                                        đã chuyển"</b>.
+                                                    <i>{`Lưu ý: Sau khi chuyển khoản xong, hãy chờ "vài phút" rồi ấn `}<b>
+                                                        {`"Xác nhận. Tôi đã chuyển"`}</b>.
                                                     </i>
                                                 </div>
                                                 <button className="my-2 h-25r fw-6 br-025 text-white px-075 border-0 bg-green"
@@ -159,8 +162,8 @@ export default function Modal(props: IModalProps) {
                                                 <div className="mt-1 fw-6 text-sm t-color">
                                                     <i>
                                                         <p>
-                                                            Giao dịch chuyển sai "Nội dung chuyển khoản" sẽ không được xử lý
-                                                            tự động. Hãy liên hệ Fanpage để được hỗ trợ.
+                                                            {`Giao dịch chuyển sai "Nội dung chuyển khoản" sẽ không được xử lý
+                                                            tự động. Hãy liên hệ Fanpage để được hỗ trợ.`}
                                                         </p>
                                                     </i>
                                                 </div>
@@ -168,7 +171,7 @@ export default function Modal(props: IModalProps) {
                                         </div>
                                     </div>
                                     {/* content popup momo */}
-                                    <div className="mt-3" id="ct-momo" style={{ display: 'none' }}>
+                                    <div className="mt-3" id="ct-momo" style={{ display: `${contentAtm === 'momo' ? 'block' : 'none'}` }}>
                                         <div>
                                             <div>
                                                 <div className="text-sm t-color-momo line-h-15">
@@ -214,10 +217,9 @@ export default function Modal(props: IModalProps) {
                                                         Lưu ý: Nếu quá 30 phút không nhận được tiền, vui lòng liên hệ page
                                                         hỗ trợ!
                                                     </p>
-                                                    <i>- Giao dịch chuyển sai "Nội dung ghi chú" sẽ không
+                                                    <i>{`- Giao dịch chuyển sai "Nội dung ghi chú" sẽ không
                                                         được xử lý tự
-                                                        động. Hãy liên hệ Fanpage để được hỗ trợ.
-                                                    </i>
+                                                        động. Hãy liên hệ Fanpage để được hỗ trợ.`} </i>
                                                 </div>
                                             </div>
                                             <div className="border-bot-w my-075"></div>
@@ -252,7 +254,7 @@ export default function Modal(props: IModalProps) {
                                 <div className="w-100 padding-05r position-sticky " style={{ zIndex: 200, top: '5rem' }}>
                                     <div className="d-grid grid-temp-col-12 gap-2 pe-2 pb-2">
                                         <div className="gc-3 d-flex align-items-center">
-                                            <img className="w-100 br-9999 border-w-1" src="/assetsU/image/unknown-avatar.jpg" alt='' />
+                                            <img className="w-100 br-9999 border-w-1" src="/image/unknown-avatar.jpg" alt='' />
                                         </div>
                                         <div className="gc-9">
                                             <p className="d-flex align-items-center">
@@ -269,115 +271,106 @@ export default function Modal(props: IModalProps) {
                                     <div className="mb-3 bor-w75-gray"></div>
                                     <div>
                                         <div className="mb-075 parent">
-                                            <div className="position-relative fw-6"><span
-                                                className="h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-color-be bg-par"
-                                                style={{ top: -2 }}>
-                                                <i className="text-lg bx bxs-user ic-par"></i>
-                                            </span>
-                                                <span className="ml-25r d-block text-par">Tài khoản</span>
+                                            <div className="position-relative fw-6">
+                                                <span
+                                                    className={`h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-par ${router.pathname === '/info' || router.pathname === '/repassword' ? 'dx' : 'bg-color-be'}`}
+                                                    style={{ top: -2 }}>
+                                                    <i className={`text-lg bx bxs-user ic-par ${router.pathname === '/info' || router.pathname === '/repassword' ? 'text-white' : ''}`}></i>
+                                                </span>
+                                                <span className={`ml-25r d-block text-par ${router.pathname === '/info' || router.pathname === '/repassword' ? 't-color' : ''}`}>Tài khoản</span>
                                             </div>
                                             <div className="ml-275 mt-1 text-sm fw-6">
                                                 <ul>
-                                                    <Link href="/info"
-                                                        className="d-block py-1 text-black">Thông
-                                                        tin chung</Link>
-                                                    <Link href="/repassword"
-                                                        className="d-block py-1 text-black">Đổi
-                                                        mật khẩu</Link>
+                                                    <Link href="/info" className={`d-block py-1 ${router.pathname === '/info' ? 't-color' : 'text-black'}`}>Thông tin chung</Link>
+                                                    <Link href="/repassword" className={`d-block py-1 ${router.pathname === '/repassword' ? 't-color' : 'text-black'}`}>Đổi mật khẩu</Link>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="mb-075 parent">
                                             <div className="position-relative fw-6">
                                                 <span
-                                                    className="h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-color-be bg-par"
+                                                    className={`h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-par ${router.pathname === '/notification' ? 'dx' : 'bg-color-be'}`}
                                                     style={{ top: -2 }}>
-                                                    <i className="text-lg bx bxs-bell ic-par"></i>
+                                                    <i className={`text-lg bx bxs-bell ic-par ${router.pathname === '/notification' ? 'text-white' : ''}`}></i>
                                                 </span>
-                                                <span className="ml-25r d-block text-par">Thông báo
-                                                </span>
+                                                <span className={`ml-25r d-block text-par ${router.pathname === '/notification' ? 't-color' : 'text-black'}`}>Thông báo </span>
                                             </div>
                                             <div className="ml-275 mt-1 text-sm fw-6">
                                                 <ul>
-                                                    <Link href="/notification"
-                                                        className="d-block py-1 text-black">Tất
-                                                        cả thông báo
+                                                    <Link href="/notification" className={`d-block py-1 ${router.pathname === '/notification' ? 't-color' : 'text-black'}`}>
+                                                        Tất cả thông báo
                                                     </Link>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="mb-075 parent">
-                                            <div className="position-relative fw-6"><span
-                                                className="h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-color-be bg-par"
-                                                style={{ top: -2 }}>
-                                                <i className="text-lg bx bxs-game ic-par"></i>
-                                            </span>
-                                                <span className="ml-25r d-block text-par">Trò chơi
+                                            <div className="position-relative fw-6">
+                                                <span
+                                                    className={`h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-par ${router.pathname === '/withdraw-items' ? 'dx' : 'bg-color-be'}`}
+                                                    style={{ top: -2 }}>
+                                                    <i className={`text-lg bx bxs-game ic-par ${router.pathname === '/withdraw-items' ? 'text-white' : ''}`}></i>
+                                                </span>
+                                                <span className={`ml-25r d-block text-par ${router.pathname === '/withdraw-items' ? 't-color' : 'text-black'}`}>Trò chơi
                                                 </span>
                                             </div>
                                             <div className="ml-275 mt-1 text-sm fw-6">
                                                 <ul>
-                                                    <a href="/withdraw-items"
-                                                        className="d-block py-1 {{ request()->is('withdraw-items') ? 't-color' : 'text-black' }}">Rút
-                                                        vật phẩm</a>
+                                                    <Link href="/withdraw-items" className={`d-block py-1 ${router.pathname === '/withdraw-items' ? 't-color' : 'text-black'}`}>
+                                                        Rút vật phẩm
+                                                    </Link>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="mb-075 parent">
                                             <div className="position-relative fw-6">
                                                 <span
-                                                    className="h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-color-be bg-par"
+                                                    className={`h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-par ${router.pathname === '/recharge' ? 'dx' : 'bg-color-be'}`}
                                                     style={{ top: -2 }}>
-                                                    <i className="text-lg bx bxs-wallet-alt ic-par"></i>
+                                                    <i className={`text-lg bx bxs-wallet-alt ic-par ${router.pathname === '/recharge' ? 'text-white' : ''}`}></i>
                                                 </span>
-                                                <span className="ml-25r d-block text-par">Giao dịch
+                                                <span className={`ml-25r d-block text-par ${router.pathname === '/recharge' ? 't-color' : 'text-black'}`}>Giao dịch
                                                 </span>
                                             </div>
                                             <div className="ml-275 mt-1 text-sm fw-6">
                                                 <ul>
-                                                    <Link href="/recharge"
-                                                        className="d-block py-1 text-black">Nạp
-                                                        thẻ cào tự động</Link>
-                                                    <a className="cursor-pointer d-block py-1 atm text-black">Nạp qua
-                                                        ATM/MOMO</a>
+                                                    <Link href="/recharge" className={`d-block py-1 ${router.pathname === '/recharge' ? 't-color' : 'text-black'}`}>Nạp thẻ cào tự động</Link>
+                                                    <a className="cursor-pointer d-block py-1 atm text-black">Nạp qua ATM/MOMO</a>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="mb-075 parent">
                                             <div className="position-relative fw-6">
                                                 <span
-                                                    className="h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-color-be bg-par"
+                                                    className={`h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-par ${router.pathname === '/voucher' ? 'dx' : 'bg-color-be'}`}
                                                     style={{ top: -2 }}>
-                                                    <i className="text-lg bx bxs-purchase-tag-alt ic-par"></i>
+                                                    <i className={`text-lg bx bxs-purchase-tag-alt ic-par ${router.pathname === '/voucher' ? 'text-white' : ''}`}></i>
                                                 </span>
-                                                <span className="ml-25r d-block text-par">Voucher
+                                                <span className={`ml-25r d-block text-par ${router.pathname === '/voucher' ? 't-color' : ''}`}>Voucher
                                                 </span>
                                             </div>
                                             <div className="ml-275 mt-1 text-sm fw-6">
                                                 <ul>
-                                                    <a href="/voucher"
-                                                        className="d-block py-1 text-black">Danh
-                                                        sách voucher</a>
+                                                    <Link href="/voucher" className={`d-block py-1 ${router.pathname === '/voucher' ? 't-color' : 'text-black'}`}>Danh sách voucher</Link>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="mb-075 parent">
                                             <div className="position-relative fw-6">
                                                 <span
-                                                    className="h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-color-be bg-par"
+                                                    className={`h-175r w-175r br-9999 d-inline-flex justify-content-center align-items-center position-absolute bg-par ${router.pathname.slice(0, router.pathname.lastIndexOf('/')) === '/history' ? 'dx' : 'bg-color-be'}`}
                                                     style={{ top: -2 }}>
-                                                    <i className="text-lg bx bxs-notepad ic-par"></i>
+                                                    <i className={`text-lg bx bxs-notepad ic-par ${router.pathname.slice(0, router.pathname.lastIndexOf('/')) === '/history' ? 'text-white' : ''}`}></i>
                                                 </span>
-                                                <span className="ml-25r d-block text-par">Lịch sử</span>
+                                                <span className={`ml-25r d-block text-par ${router.pathname.slice(0, router.pathname.lastIndexOf('/')) === '/history' ? 't-color' : 'text-black'}`}>Lịch sử</span>
                                             </div>
                                             <div className="ml-275 mt-1 text-sm fw-6">
                                                 <ul>
-                                                    <Link href="/history/game" className="d-block py-1 text-black">Chơi game</Link>
-                                                    <Link href="/history/add_card" className="d-block py-1 text-black' }}">Nạp thẻ</Link>
-                                                    <Link href="/history/transaction" className="d-block py-1 text-black">Giao dịch</Link>
-                                                    <Link href="/history/buy_nick" className="d-block py-1 text-black">Mua tài khoản (nick)</Link>
-                                                    <Link href="/history/buy_items" className="d-block py-1 text-black">Mua hòm v.phẩm</Link>
-                                                    <Link href="/history/service" className="d-block py-1 text-black' }}">Mua vật phẩm (Dịch vụ)</Link>
+                                                    <Link href="/history/game" className={`d-block py-1 ${router.pathname === '/history/game' ? 't-color' : 'text-black'}`}>Chơi game</Link>
+                                                    <Link href="/history/add_card" className={`d-block py-1 ${router.pathname === '/history/add_card' ? 't-color' : 'text-black'}`}>Nạp thẻ</Link>
+                                                    <Link href="/history/transaction" className={`d-block py-1 ${router.pathname === '/history/transaction' ? 't-color' : 'text-black'}`}>Giao dịch</Link>
+                                                    <Link href="/history/buy_nick" className={`d-block py-1 ${router.pathname === '/history/buy_nick' ? 't-color' : 'text-black'}`}>Mua tài khoản (nick)</Link>
+                                                    <Link href="/history/buy_items" className={`d-block py-1 ${router.pathname === '/history/buy_items' ? 't-color' : 'text-black'}`}>Mua hòm v.phẩm</Link>
+                                                    <Link href="/history/service" className={`d-block py-1 ${router.pathname === '/history/service' ? 't-color' : 'text-black'}`}>Mua vật phẩm (Dịch vụ)</Link>
                                                 </ul>
                                             </div>
                                         </div>
@@ -557,3 +550,234 @@ export default function Modal(props: IModalProps) {
         </div >
     );
 }
+//     const [contentAtm, setContentAtm] = useState('')
+
+//     return (
+//         <div className="load-atm" style={{ display: 'none' }}>
+//             <div className="modal-atm" style={{ zIndex: 1002 }}>
+//                 <div role="dialog" aria-modal="true" aria-label="dialog" className="el-dialog tw-dialog-trans"
+//                     style={{ marginTop: '15vh' }}>
+//                     <div className="el-dialog__header">
+//                         <div className="text-white fw-6">
+//                             NẠP TIỀN - CHUYỂN KHOẢN QUA
+//                         </div>
+//                         <button type="button" aria-label="Close" className="el-dialog__headerbtn">
+//                             <i className="el-dialog__close el-icon btn-close btn-close-white" onClick={() => closeModalAtm(false)}></i>
+//                         </button>
+//                     </div>
+//                     <div className="el-dialog__body">
+//                         <div className="my-3" style={{ wordBreak: 'break-word' }}>
+//                             <div className="d-grid grid-temp-col-12 gap-3">
+//                                 <div className="gc-6 gc-12i">
+//                                     <button className="px-3 align-items-center br-025 w-100 d-flex h-3r border bank" onClick={() => setContentAtm('atm')}>
+//                                         <img className="w-15 lazyLoad isLoaded" src="/image/bank.png" alt='' />
+//                                         <span className="ml-05 fw-6 text-bank">Ngân Hàng (ATM)</span>
+//                                     </button>
+//                                 </div>
+//                                 <div className="gc-6 gc-12i">
+//                                     <button className="px-3 align-items-center br-025 w-100 d-flex h-3r border momo" onClick={() => setContentAtm('momo')}>
+//                                         <img className="w-15 lazyLoad isLoaded" src="/image/momo.png" alt='' />
+//                                         <span className="ml-05 fw-6 text-momo">Ứng dụng MOMO</span>
+//                                     </button>
+//                                 </div>
+//                             </div>
+//                             <div>
+//                                 <div className={`mt-3 ct-nt ${contentAtm === 'atm' || contentAtm === 'momo' ? 'd-none' : ''}`} >
+//                                     <div className="text-sm fw-6">
+//                                         <p>
+//                                             <span>
+//                                                 <i className="bx bx-caret-right"></i>
+//                                             </span> Hệ thống nạp <b className="t-color">ATM/MOMO tự động 24/24</b>, Nạp 100k
+//                                             nhận
+//                                             110k tiền shop
+//                                         </p>
+//                                         <p>
+//                                             <span>
+//                                                 <i className="bx bx-caret-right"></i>
+//                                             </span>
+//                                             <b> Lưu ý: </b> Chuyển tiền
+//                                             nhanh 24/7 để tránh bị treo, chậm
+//                                             tiền! Nếu gửi đúng stk và nội dung mà 30p không nhận được tiền
+//                                             hoặc chuyển ghi sai nội dung vui lòng liên hệ page để được hỗ
+//                                             trợ.
+//                                         </p>
+//                                     </div>
+//                                 </div>
+//                                 <div className={`mt-3 ct-nt ${contentAtm === 'atm' || contentAtm === 'momo' ? 'd-none' : ''}`}>
+//                                     <label className="uppercase t-color fw-7 text-sm d-block mb-2">
+//                                         Quy Đổi Tiền Nạp ATM/MOMO
+//                                     </label>
+//                                     <div className="d-flex justify-content-between align-items-center">
+//                                         <div className="box-40">
+//                                             <div className="w-100 position-relative">
+//                                                 <label className="d-inline-block position-absolute text-xs fw-5"
+//                                                     style={{ left: 10, top: 6 }}>
+//                                                     Số tiền bạn chuyển
+//                                                 </label>
+//                                                 <input type="number" placeholder=""
+//                                                     className="pt-075 px-2 h-3r br-025 border-w-2-gray w-100 text-sm fw-6" />
+//                                             </div>
+//                                             <span className="mt-1 position-absolute text-xs d-block fw-6">
+//                                                 <i className="position-relative fw-5 bx bx-subdirectory-right"
+//                                                     style={{ top: 1 }}></i>
+//                                                 0đ</span>
+//                                         </div>
+//                                         <div className="box-20">
+//                                             <i className="bx bx-transfer-alt text-lg"></i>
+//                                         </div>
+//                                         <div className="box-40">
+//                                             <div className="w-100 position-relative">
+//                                                 <label className="d-inline-block position-absolute text-xs fw-5"
+//                                                     style={{ left: 10, top: 6 }}>
+//                                                     Tiền nhận trên shop
+//                                                 </label>
+//                                                 <input readOnly placeholder=""
+//                                                     className="pt-075 px-2 h-3r br-025 border-w-2-gray w-100 text-sm fw-6" />
+//                                             </div>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 {/* content popup atm */}
+//                                 <div className="mt-3" id="ct-bank" style={{ display: `${contentAtm === 'atm' ? 'block' : 'none'}` }}>
+//                                     <div>
+//                                         <div>
+//                                             <div className="text-sm t-color line-h-15">
+//                                                 <p>
+//                                                     <span className="text-black">
+//                                                         <strong>THÔNG TIN TÀI KHOẢN NGÂN HÀNG</strong>
+//                                                     </span>
+//                                                 </p>
+//                                                 <p>
+//                                                     <strong>CHỦ TÀI KHOẢN: </strong>
+//                                                     <span>
+//                                                         <strong>TRẦN VIỆT TÙNG</strong>
+//                                                     </span>
+//                                                 </p>
+//                                                 <p>
+//                                                     <strong>NGÂN HÀNG : </strong>
+//                                                     <span>
+//                                                         <strong>VIETCOMBANK</strong>
+//                                                     </span>
+//                                                 </p>
+//                                                 <p>
+//                                                     <strong>SỐ TÀI KHOẢN : </strong>
+//                                                     <span>
+//                                                         <strong>0451000413951</strong>
+//                                                     </span>
+//                                                 </p>
+//                                             </div>
+//                                             <button
+//                                                 className="text-white uppercase fw-7 text-xs px-2 br-025 h-15r mt-1 bg-gray border-0">
+//                                                 Copy số tài khoản
+//                                             </button>
+//                                         </div>
+//                                         <div className="border-bot-w my-075"></div>
+//                                         <div className="my-2">
+//                                             <p className="fw-6 text-sm mb-1">
+//                                                 Nội dung chuyển khoản:
+//                                             </p>
+//                                             <div className="position-relative">
+//                                                 <input readOnly value="nap1650845"
+//                                                     className="t-color fw-8 text-lg px-075 bor-col-red border-dashed w-100 bor-w-2 br-025 h-25r" />
+//                                                 <button
+//                                                     className="text-white fw-6 text-sm py-1 px-3 dx br-025 align-items-center d-flex h-15r position-absolute"
+//                                                     style={{ top: 8, right: 8 }}>
+//                                                     COPY NỘI DUNG
+//                                                 </button>
+//                                             </div>
+//                                             <div className="mt-2 fw-6 text-sm">
+//                                                 <i className="ml-075 bx bxs-upvote"></i> Khi chuyển khoản qua Ngân hàng (ATM)
+//                                                 bạn
+//                                                 cần ghi nội dung
+//                                                 <b className="mx-1 t-color">nap1650845 </b>bên trên.
+//                                             </div>
+//                                             <div className="mt-1 text-sm fw-6 t-color">
+//                                                 <i>{`Lưu ý: Sau khi chuyển khoản xong, hãy chờ "vài phút" rồi ấn `}<b>
+//                                                     {`"Xác nhận. Tôi đã chuyển"`}</b>.
+//                                                 </i>
+//                                             </div>
+//                                             <button className="my-2 h-25r fw-6 br-025 text-white px-075 border-0 bg-green"
+//                                                 style={{ backgroundColor: '#1a9d60' }}>
+//                                                 Xác nhận. Tôi đã chuyển
+//                                             </button>
+//                                             <div className="mt-1 fw-6 text-sm t-color">
+//                                                 <i>
+//                                                     <p>
+//                                                         {`Giao dịch chuyển sai "Nội dung chuyển khoản" sẽ không được xử lý
+//                                                             tự động. Hãy liên hệ Fanpage để được hỗ trợ.`}
+//                                                     </p>
+//                                                 </i>
+//                                             </div>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 {/* content popup momo */}
+//                                 <div className="mt-3" id="ct-momo" style={{ display: `${contentAtm === 'momo' ? 'block' : 'none'}` }}>
+//                                     <div>
+//                                         <div>
+//                                             <div className="text-sm t-color-momo line-h-15">
+//                                                 <p><strong>THÔNG TIN VÍ MOMO</strong></p>
+//                                                 <p><strong>CHỦ TÀI KHOẢN: </strong>
+//                                                     <span className="t-color">
+//                                                         <strong>TRẦN VIỆT TÙNG</strong>
+//                                                     </span>
+//                                                 </p>
+//                                                 <p><strong>&#xFEFF;VÍ MOMO: </strong>
+//                                                     <span className="t-color"><strong>0398793456</strong>
+//                                                     </span>
+//                                                 </p>
+//                                             </div>
+//                                             <button
+//                                                 className="text-white uppercase fw-7 text-xs px-2 br-025 h-15r mt-1 bg-gray border-0">
+//                                                 Copy số tài khoản ví MOMO
+//                                             </button>
+//                                         </div>
+//                                         <div className="border-bot-w my-075"></div>
+//                                         <div className="my-2">
+//                                             <p className="fw-6 text-sm mb-1">
+//                                                 Nội dung <b className="t-color">ghi chú</b> khi chuyển:
+//                                             </p>
+//                                             <div className="position-relative">
+//                                                 <input readOnly value="nap1650845"
+//                                                     className="t-color-momo fw-8 text-lg px-075 bor-col-red border-dashed w-100 bor-w-2 br-025 h-25r" />
+//                                                 <button
+//                                                     className="text-white fw-6 text-sm py-1 px-3 bg-momo br-025 align-items-center d-flex h-15r position-absolute border-0"
+//                                                     style={{ top: 8, right: 8 }}>
+//                                                     COPY NỘI DUNG
+//                                                 </button>
+//                                             </div>
+//                                             <div className="mt-2 fw-6 text-sm">
+//                                                 <i className="ml-075 bx bxs-upvote"></i> Khi chuyển khoản qua
+//                                                 ví Momo bạn
+//                                                 cần ghi nội dung ghi chú
+//                                                 <b className="mx-1 t-color-momo">nap1650845 </b>
+//                                                 bên trên.
+//                                             </div>
+//                                             <div className="mt-1 fw-6 text-sm t-color">
+//                                                 <p>
+//                                                     Lưu ý: Nếu quá 30 phút không nhận được tiền, vui lòng liên hệ page
+//                                                     hỗ trợ!
+//                                                 </p>
+//                                                 <i>{`- Giao dịch chuyển sai "Nội dung ghi chú" sẽ không
+//                                                         được xử lý tự
+//                                                         động. Hãy liên hệ Fanpage để được hỗ trợ.`} </i>
+//                                             </div>
+//                                         </div>
+//                                         <div className="border-bot-w my-075"></div>
+//                                         <div className="mt-1">
+//                                             <p className="fw-6 text-sm mb-1">
+//                                                 Vui lòng chuyển trên 5000đ để được cộng tự động.
+//                                             </p>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default modalAtm;

@@ -1,3 +1,4 @@
+import ModalHome from '@/components/modal/home';
 import { useState } from 'react';
 import Marquee from "react-fast-marquee";
 export interface HomePageProps {
@@ -5,8 +6,12 @@ export interface HomePageProps {
 
 export default function HomePage(props: HomePageProps) {
   const [active, setActive] = useState('')
+  const [modalHome, setModalHome] = useState(true)
+
+
   return (
     <div className="main-content">
+      {modalHome && <ModalHome closeModalHome={setModalHome} />}
       <div className="content">
         {/* box1 */}
         <div className="box1">
@@ -37,7 +42,7 @@ export default function HomePage(props: HomePageProps) {
           </div>
           <div className="bxh-home">
             <div className="title-h d-flex fw-7 bg-box">
-              <div className={`top-nap pb-1 pe-1 ps-1 ${active === 'sk' ? 'bg-box-gray' : ''}`}  onClick={() => setActive('tn')}>
+              <div className={`top-nap pb-1 pe-1 ps-1 ${active === 'sk' ? 'bg-box-gray' : ''}`} onClick={() => setActive('tn')}>
                 <span className={`t-top uppercase  fw-8 ${active === 'sk' ? 'text-black' : 't-color'}`}>Top Nạp T.2</span>
                 <div className="tc d-flex justify-content-center">
                   <button className={`t-tc uppercase fw-7 text-white pe-2 ps-2 ${active === 'sk' ? '' : 'tc-a'}`}>Thẻ cào</button>
@@ -49,8 +54,8 @@ export default function HomePage(props: HomePageProps) {
               </div>
             </div>
             <div className="content-h pt-2 pb-2 bg-box position-relative">
-              <div className="t-ct-h d-flex justify-content-center d-none">Chưa có thông báo mới</div>
-              <div className="nt-ct-h">
+              <div className={`t-ct-h d-flex justify-content-center ${active === 'sk' ? '' : 'd-none'}`}>Chưa có thông báo mới</div>
+              <div className={`nt-ct-h ${active === 'sk' ? 'd-none' : ''}`}>
                 <div className="nt-top overflow-auto mb-3">
                   <div className="px-2 d-flex justify-content-between align-items-center mb-025">
                     <div className="topl d-flex">
@@ -353,19 +358,19 @@ export default function HomePage(props: HomePageProps) {
           </div>
         </div >
         {/* animation  */}
-        {/* < div >
-          <div className="position-fixed d-inline animation" style={{ bottom: 20, left: 20, zIndex: 1000 }}>
+        < div className={`${active === 'close' ? 'd-none' : ''}`}>
+          <div className="position-fixed d-inline animation" style={{ bottom: 20, left: 20, zIndex: 100 }}>
             <a>
               <img src="https://cdns.diongame.com/static/image-abe06c17-1fcf-4919-9021-50368f514235.gif"
                 className="h-16r cursor-pointer" alt='' />
             </a>
             <button
               className="position-absolute h-15r w-15r d-flex align-items-center justify-content-center br-025 dx text-white close"
-              style={{ left: 0, top: 0, zIndex: 101 }}>
+              style={{ left: 0, top: 0, zIndex: 101 }} onClick={() => setActive('close')}>
               <i className="bx bx-x"></i>
             </button>
           </div>
-        </div > */}
+        </div >
       </div >
     </div >
   );

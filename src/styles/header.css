@@ -161,13 +161,22 @@ header {
     .t-btn-login {
         margin-left: 0.5rem;
     }
-    .dropmenu{
+
+    .dropmenu {
         left: 473px;
     }
 }
 
-@media screen and (max-width: 418px) {
-    .dropmenu{
+@media screen and (max-width: 415px) {
+    .h-img2 {
+        top: -20px
+    }
+
+    .ml-0r {
+        margin-left: 0rem !important;
+    }
+
+    .dropmenu {
         top: 55px;
         left: 119px;
     }

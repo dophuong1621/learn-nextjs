@@ -14,7 +14,7 @@ import '@/styles/withdraw-items.css';
 import '@/styles/home.css';
 
 export default class MyApp extends App {
-  render () {
+  render() {
     const { Component, pageProps } = this.props
     return (
       <Layout>

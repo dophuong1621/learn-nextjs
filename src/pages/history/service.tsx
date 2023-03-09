@@ -38,11 +38,11 @@ export default function Service(props: IServiceProps) {
                                         <thead className="has-gutter">
                                             <tr className="">
                                                 <th rowSpan={1} colSpan={1}
-                                                    className="el-table_1_column_1     is-leaf el-table__cell">
+                                                    className="el-table_1_column_1 is-leaf el-table__cell">
                                                     <div className="cell">THÔNG TIN</div>
                                                 </th>
                                                 <th colSpan={1} rowSpan={1}
-                                                    className="el-table_1_column_2     is-leaf el-table__cell">
+                                                    className="el-table_1_column_2 is-leaf el-table__cell">
                                                     <div className="cell">TRẠNG THÁI</div>
                                                 </th>
                                                 <th className="el-table__cell gutter" style={{ width: 0, display: 'none' }}></th>
@@ -60,7 +60,7 @@ export default function Service(props: IServiceProps) {
                                         <tbody>
                                         </tbody>
                                     </table>
-                                    <div className="el-table__empty-block" style={{ height: '100 %', width: 867 }}><span
+                                    <div className="el-table__empty-block no-data" style={{ height: '100 %', width: 867 }}><span
                                         className="el-table__empty-text">Không có dữ liệu</span></div>
                                 </div>
                                 <div className="el-table__column-resize-proxy" style={{ display: 'none' }}></div>
