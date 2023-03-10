@@ -359,22 +359,28 @@
     width: 8rem;
 }
 
-.h-275{
+.h-275 {
     height: 2.75rem;
 }
 
-.rounded-r-full{
+.rounded-r-full {
     border-top-right-radius: 9999px;
     border-bottom-right-radius: 9999px;
 }
 
 /* Reponsive */
-@media screen and (max-width: 769px) {
-    .t-sm{
+@media screen and (max-width: 995px) {
+    .t-sm {
         font-size: 0.9rem !important;
     }
+}
 
-    .modal-atm{
+@media screen and (max-width: 769px) {
+    .t-sm {
+        font-size: 0.7rem !important;
+    }
+
+    .modal-atm {
         top: 33%;
     }
 
@@ -392,11 +398,11 @@
 }
 
 @media screen and (max-width: 415px) {
-    .text-tk{
+    .text-tk {
         height: 9rem;
     }
 
-    .modal-atm{
+    .modal-atm {
         top: 40%;
     }
 
@@ -412,12 +418,12 @@
         height: 600px;
     }
 
-    .t-sm{
+    .t-sm {
         font-size: .875rem !important;
         line-height: 1.25rem !important;
     }
 
-    .sk-new{
+    .sk-new {
         padding-right: 2rem;
         padding-left: 2rem;
     }

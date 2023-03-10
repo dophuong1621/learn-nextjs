@@ -14,7 +14,7 @@ function ModalLogin({ closeModalLogin }: any) {
                     </div>
                     <div className="login-body">
                         <div className="w-100">
-                            <img className="h-4r mx-auto"
+                            <img className="h-4r mx-auto d-block"
                                 src="https://cdns.diongame.com/static/image-87a3f611-cc43-4bc6-a047-a5de520ad6b6.png" alt='' />
                             <h3 className="text-center text-lg fw-7 tw-text-blue mb-2r">
                                 ĐĂNG NHẬP TÀI KHOẢN
