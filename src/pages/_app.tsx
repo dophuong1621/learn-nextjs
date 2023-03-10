@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import App from 'next/app';
 import Layout from '../components/layouts/';
 import '@/styles/header.css';
@@ -12,11 +12,14 @@ import '@/styles/recharge.css';
 import '@/styles/trang-chu.css';
 import '@/styles/withdraw-items.css';
 import '@/styles/home.css';
+import ModalAtm from '@/components/modal/atm';
 
 export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
+
     return (
+
       <Layout>
         <Component {...pageProps} />
       </Layout>

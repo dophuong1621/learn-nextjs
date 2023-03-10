@@ -1,12 +1,30 @@
-import { useState } from 'react';
-import BoxLeft from '@/components/layouts/sidebar';
-import BtnMenu from '@/components/btn-menu';
+import { useEffect, useState } from 'react'
+import BoxLeft from '@/components/layouts/sidebar'
+import BtnMenu from '@/components/btn-menu'
+import {numb} from '@/helper/formatNumber'
+// import * as recharge from './api/recharge'
+// import request from '../ultis/request'
+import axios from 'axios'
 
-export interface RechargePageProps {
-}
-
-export default function RechargePage(props: RechargePageProps) {
+export default function RechargePage() {
     const [isActive, setIsActive] = useState('');
+    const [recharge, setRecharge] = useState([]);
+
+    const typeRecharge = ['Viettel', 'Mobifone', 'Vinaphone']
+
+    useEffect(() => {
+        axios({
+            method: 'GET',
+            url: 'http://127.0.0.1:8000/api/recharge',
+            data: null
+        }).then(res => {
+            setRecharge(res.data);
+        }).catch(err => {
+            console.log(err);
+        }).finally(() => {
+
+        })
+    }, [])
 
     return (
         <div>
@@ -130,11 +148,13 @@ export default function RechargePage(props: RechargePageProps) {
                                     </tr>
                                 </thead>
                                 <tbody className="recharge-ct">
-                                    {/* <tr @foreach ($recharge as $rc)>
-                                    <th className="px-2 py-2">{{ $type[$rc->type_charge] }}</th>
-                                    <th className="px-2 py-2">{{ $rc->pin . '/' . $rc->serial }}</th>
-                                    <th className="px-2 py-2">{{ number_format($rc->money_received, 0, '.', '.') }} đ</th>
-                                    </tr @endforeach> */}
+                                    {recharge.map((x: any, i: any) =>
+                                        <tr key={i}>
+                                            <th className="px-2 py-2">{typeRecharge[x.type_charge]}</th>
+                                            <th className="px-2 py-2">{x.pin + '/' + x.serial}</th>
+                                            <th className="px-2 py-2">{numb(x.money_received, { suffix: ' đ' })}</th>
+                                        </tr>
+                                    )}
                                 </tbody>
                             </table>
                         </div>
@@ -142,5 +162,5 @@ export default function RechargePage(props: RechargePageProps) {
                 </div>
             </div>
         </div>
-    );
+    )
 }
