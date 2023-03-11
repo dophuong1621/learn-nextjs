@@ -1,31 +1,63 @@
 import { useEffect, useState } from 'react'
 import BoxLeft from '@/components/layouts/sidebar'
 import BtnMenu from '@/components/btn-menu'
-import {numb} from '@/helper/formatNumber'
+import { numb } from '@/helper/formatNumber'
 // import * as recharge from './api/recharge'
 // import request from '../ultis/request'
 import axios from 'axios'
 
 export default function RechargePage() {
     const [isActive, setIsActive] = useState('');
-    const [recharge, setRecharge] = useState([]);
+    const [rechargeI, setRechargeI] = useState([]);
+    const [formValues, setFormValues] = useState({'id': '454992'});
 
-    const typeRecharge = ['Viettel', 'Mobifone', 'Vinaphone']
+    const typeRecharge = ['Viettel', 'Vinaphone', 'Mobifone']
+
+    type TypeField = {
+        name: string,
+        value: string,
+    }
+
+    const handleSetFormValues = ({ name, value }: TypeField) => {
+        setFormValues({
+            ...formValues,
+            [name]: value,
+        })
+    }
+    console.log(formValues)
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        axios({
+            method: "post",
+            url: "http://127.0.0.1:8000/api/recharge",
+            data: formValues,
+            headers: { "Content-Type": "multipart/form-data" },
+        }).then(function (res) {
+            alert('Nạp thẻ thành công');
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/recharge',
+            }).then(res => {
+                setRechargeI(res.data);
+            }).catch(err => {
+                console.log(err);
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    };
 
     useEffect(() => {
         axios({
             method: 'GET',
             url: 'http://127.0.0.1:8000/api/recharge',
-            data: null
         }).then(res => {
-            setRecharge(res.data);
+            setRechargeI(res.data);
         }).catch(err => {
             console.log(err);
-        }).finally(() => {
-
         })
     }, [])
-
     return (
         <div>
             <div className="px-2 gap-2 ct d-grid mx-auto">
@@ -41,32 +73,45 @@ export default function RechargePage() {
                         </div>
                         <div className="mb-3 error-nt form-nt">
                         </div>
-                        <form className="form-nt" action="{{ route('rechargePrs') }}" method="POST" encType="multipart/form-data"
+                        <form className="form-nt" onSubmit={handleSubmit} encType="multipart/form-data"
                             id="form_nt">
                             <div className="mb-2">
                                 <label className="text-sm">
                                     Nhà mạng <b>(Ưu tiên Viettel, Vinaphone)</b></label>
                                 <div className="text-sm gap-2 d-grid grid-temp-col-12 " id="homeNetwork">
-                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box viettel ${isActive === 'viettel' ? 'bor-col-red' : ''}`}
-                                        data-type="0" onClick={() => setIsActive('viettel')}>
-                                        <img style={{ filter: `${isActive === 'viettel' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
+                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box viettel ${isActive === '0' ? 'bor-col-red' : ''}`}
+                                        data-type="0" onClick={() => {
+                                            handleSetFormValues({ name: 'type_charge', value: '0' })
+                                            setIsActive('0')
+                                        }}>
+                                        <img style={{ filter: `${isActive === '0' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
                                             src="/image/viettel.png" alt='' />
                                     </button>
-                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box vina ${isActive === 'vina' ? 'bor-col-red' : ''}`}
-                                        data-type="1" onClick={() => setIsActive('vina')}>
-                                        <img style={{ filter: `${isActive === 'vina' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
+                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box vina ${isActive === '1' ? 'bor-col-red' : ''}`}
+                                        data-type="1" onClick={() => {
+                                            handleSetFormValues({ name: 'type_charge', value: '1' })
+                                            setIsActive('1')
+                                        }}>
+                                        <img style={{ filter: `${isActive === '1' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
                                             src="/image/vinaphone.png" alt='' />
                                     </button>
-                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box mobi ${isActive === 'mobi' ? 'bor-col-red' : ''}`}
-                                        data-type="2" onClick={() => setIsActive('mobi')}>
-                                        <img style={{ filter: `${isActive === 'mobi' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
+                                    <button type="button" className={`fw-7 px-075 br-025 bor-1 gc-4 h-25r bg-box mobi ${isActive === '2' ? 'bor-col-red' : ''}`}
+                                        data-type="2" onClick={() => {
+                                            handleSetFormValues({ name: 'type_charge', value: '2' })
+                                            setIsActive('2')
+                                        }}>
+                                        <img style={{ filter: `${isActive === '2' ? '' : 'grayscale(100%)'}`, maxWidth: '100%', height: 'auto' }}
                                             src="/image/mobifone.png" alt='' />
                                     </button>
                                 </div>
                             </div>
                             <div className="mb-2">
                                 <label className="text-sm"> Mệnh giá </label>
-                                <select className="px-075 bor-1 br-025 w-100 h-25r bor-coler-be price" name="money_received">
+                                <select className="px-075 bor-1 br-025 w-100 h-25r bor-coler-be price" name="money_received" onChange={(event) => {
+                                    const name = (event.target as HTMLSelectElement).name;
+                                    const value = (event.target as HTMLSelectElement).value;
+                                    handleSetFormValues({ name, value })
+                                }}>
                                     <option value="" selected disabled>Chọn mệnh giá</option>
                                     <option className="fw-5 t-color" value="10000">
                                         10,000 VNĐ (nhận 100%)
@@ -99,11 +144,19 @@ export default function RechargePage() {
                             </div>
                             <div className="mb-3">
                                 <label className="text-sm"> Mã thẻ </label>
-                                <input className="px-075 bor-1 br-025 w-100 h-25r bor-coler-be idCard" name="pin" />
+                                <input className="px-075 bor-1 br-025 w-100 h-25r bor-coler-be idCard" name="pin" onChange={(event) => {
+                                    const name = (event.target as HTMLInputElement).name;
+                                    const value = (event.target as HTMLInputElement).value;
+                                    handleSetFormValues({ name, value })
+                                }} />
                             </div>
                             <div className="mb-3">
                                 <label className="text-sm"> Serial thẻ </label>
-                                <input className="px-075 bor-1 br-025 w-100 h-25r bor-coler-be seri" name="serial" />
+                                <input className="px-075 bor-1 br-025 w-100 h-25r bor-coler-be seri" name="serial" onChange={(event) => {
+                                    const name = (event.target as HTMLInputElement).name;
+                                    const value = (event.target as HTMLInputElement).value;
+                                    handleSetFormValues({ name, value })
+                                }} />
                             </div>
                             <button type="submit" className="br-025 h-25r btn-nt fw-6 text-white">
                                 Nạp Thẻ
@@ -148,7 +201,7 @@ export default function RechargePage() {
                                     </tr>
                                 </thead>
                                 <tbody className="recharge-ct">
-                                    {recharge.map((x: any, i: any) =>
+                                    {rechargeI.map((x: any, i: any) =>
                                         <tr key={i}>
                                             <th className="px-2 py-2">{typeRecharge[x.type_charge]}</th>
                                             <th className="px-2 py-2">{x.pin + '/' + x.serial}</th>
