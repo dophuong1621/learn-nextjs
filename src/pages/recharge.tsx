@@ -12,6 +12,7 @@ export default function RechargePage() {
 
     const typeRecharge = ['Viettel', 'Mobifone', 'Vinaphone']
 
+    // list recharge
     useEffect(() => {
         axios({
             method: 'GET',
